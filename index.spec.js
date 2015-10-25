@@ -39,8 +39,8 @@ test( 'credits - folder exists', t => {
         maintainers : [
           'Randy Ran',
           {
-            name  : "Bobby Bob",
-            email : "bobby@bob.io"
+            name  : 'Bobby Bob',
+            email : 'bobby@bob.io'
           }
         ]
       } ),
@@ -83,5 +83,5 @@ test( 'credits - folder does not exist', t => {
     .catch( error => {
       t.same( error.message, '/path/that/does/not/exist does not exist' );
       t.end();
-    } )
+    } );
 } );
