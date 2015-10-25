@@ -1,3 +1,5 @@
+[![Build Status](http://img.shields.io/travis/stefanjudis/credits.svg?style=flat)](https://travis-ci.org/stefanjudis/credits) [![npm version](http://img.shields.io/npm/v/credits.svg?style=flat)](https://www.npmjs.org/package/credits) [![npm downloads](http://img.shields.io/npm/dm/credits.svg?style=flat)](https://www.npmjs.org/package/credits) [![Dependency Status](http://img.shields.io/gemnasium/stefanjudis/credits.svg?style=flat)](https://gemnasium.com/stefanjudis/credits) [![Coverage Status](http://img.shields.io/coveralls/stefanjudis/credits.svg?style=flat)](https://coveralls.io/r/stefanjudis/credits?branch=master)
+
 # credits
 
 We all use a lot of open source projects. Really often we don't even know who is responsible for all the well done projects. You want to see who to thank for hard work?
