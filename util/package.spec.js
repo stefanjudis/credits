@@ -103,6 +103,20 @@ test( 'getMaintainers - maintainers is not defined', t => {
   t.end();
 } );
 
+test( 'getMaintainers - maintainers is an invalid string', t => {
+  let packageJson = {
+    maintainers : 'Bob Calsow <bob@calsow.io> (http://4waisenkinder.de)'
+  };
+
+  let maintainers = packageUtil.getMaintainers( packageJson );
+
+  t.same(
+    maintainers[ 0 ],
+    { name : 'Bob Calsow', email : 'bob@calsow.io', url : 'http://4waisenkinder.de' }
+  );
+  t.end();
+} );
+
 test( 'getMaintainers - maintainers is not defined', t => {
   let packageJson = {};
 

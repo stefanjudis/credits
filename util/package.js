@@ -58,6 +58,12 @@ function getMaintainers( packageJson ) {
     } );
   }
 
+  // safety fix for people doing
+  // -> "maintainers" : "Bob <some.email>"
+  if ( typeof packageJson.maintainers === 'string' ) {
+    packageJson.maintainers = [ getPersonObject( packageJson.maintainers ) ];
+  }
+
   return packageJson.maintainers ?
           packageJson.maintainers :
           false;
