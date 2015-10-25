@@ -56,4 +56,4 @@ credits( creditPath )
  */
 ```
 
-### So thanks to all these [people](./T)
+#### I want to thank all these [people](./THANKS.md) for their great work!!!
