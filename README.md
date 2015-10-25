@@ -10,6 +10,8 @@ We all use a lot of open source projects. Really often we don't even know who is
 
 `credits` will check all `node_modules` recursively and evaluate the **Author** and **Maintainers** of the **installed** dependencies included in the set path.
 
+*In case you want to use it over the command line, there is also [credits-cli](https://github.com/stefanjudis/credits-cli).*
+
 ### credits( path )
 
 **Description** : Evaluate persons responsible for your dependencies.
