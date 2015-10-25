@@ -1,10 +1,11 @@
 {
   "name": "y",
   "version": "1.0.0",
-  "description": "Fint out on whose work your project is based on",
+  "description": "Find out on whose work your project is based on",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "lint": "eslint index.js util/*",
+    "test": "npm run lint && ava *.spec.js ./**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/stefanjudis/credits/issues"
   },
-  "homepage": "https://github.com/stefanjudis/credits#readme"
+  "homepage": "https://github.com/stefanjudis/credits#readme",
+  "devDependencies": {
+    "ava": "^0.3.0",
+    "eslint": "^1.7.3",
+    "tmp": "0.0.28"
+  }
 }
