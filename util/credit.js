@@ -11,7 +11,7 @@
  * @tested
  */
 function getCredit( credits, author ) {
-  let credit = credits.filter( credit => {
+  var credit = credits.filter( credit => {
     // fallback to name when no email
     // is available
     if ( credit.email && author.email ) {
@@ -39,7 +39,7 @@ function getCredit( credits, author ) {
  * @tested
  */
 function addCreditToCredits( credits, person, name ) {
-  let credit = getCredit( credits, person );
+  var credit = getCredit( credits, person );
 
   if ( ! credit ) {
     credit          = person;

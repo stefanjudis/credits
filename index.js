@@ -1,9 +1,9 @@
 'use strict';
 
-const fs          = require( 'fs' );
-const path        = require( 'path' );
-const creditUtil  = require( './util/credit' );
-const packageUtil = require( './util/package' );
+var fs          = require( 'fs' );
+var path        = require( 'path' );
+var creditUtil  = require( './util/credit' );
+var packageUtil = require( './util/package' );
 
 
 /**
@@ -20,7 +20,7 @@ const packageUtil = require( './util/package' );
 function readDirectory( projectPath, credits ) {
   credits = credits || [];
 
-  let depPath = path.join( projectPath, 'node_modules' );
+  var depPath = path.join( projectPath, 'node_modules' );
 
   // projects without dependencies won't have
   // a node_modules folder
@@ -32,9 +32,9 @@ function readDirectory( projectPath, credits ) {
 
   deps.forEach( name => {
     if ( name !== '.bin' ) {
-      let packageJson = require( path.join( depPath, name, 'package.json' ) );
-      let author      = packageUtil.getAuthor( packageJson );
-      let maintainers = packageUtil.getMaintainers( packageJson );
+      var packageJson = require( path.join( depPath, name, 'package.json' ) );
+      var author      = packageUtil.getAuthor( packageJson );
+      var maintainers = packageUtil.getMaintainers( packageJson );
 
       if ( author ) {
         credits = creditUtil.addCreditToCredits( credits, author, name );
