@@ -49,7 +49,7 @@ function getAuthor( packageJson ) {
  */
 function getMaintainers( packageJson ) {
   if ( packageJson.maintainers instanceof Array ) {
-    packageJson.maintainers = packageJson.maintainers.map( maintainer => {
+    packageJson.maintainers = packageJson.maintainers.map( function( maintainer ) {
       if ( typeof maintainer === 'string' ) {
         return getPersonObject( maintainer );
       }

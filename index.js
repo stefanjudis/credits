@@ -30,7 +30,7 @@ function readDirectory( projectPath, credits ) {
     return credits;
   }
 
-  deps.forEach( name => {
+  deps.forEach( function( name ) {
     if ( name !== '.bin' ) {
       var packageJson = require( path.join( depPath, name, 'package.json' ) );
       var author      = packageUtil.getAuthor( packageJson );
@@ -41,7 +41,7 @@ function readDirectory( projectPath, credits ) {
       }
 
       if ( maintainers ) {
-        maintainers.forEach( ( maintainer ) => {
+        maintainers.forEach( function( maintainer ) {
           credits = creditUtil.addCreditToCredits( credits, maintainer, name );
         } );
       }
