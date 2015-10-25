@@ -6,9 +6,9 @@ We all use a lot of open source projects. Really often we don't even know who is
 
 **Use `credits` and find out on whose work your projects are based on.**
 
-## basic usage
+## Basic usage
 
-`credits` will check all `node_modules` recursively and evaluate the **Author** and **Maintainers** of your installed dependencies.
+`credits` will check all `node_modules` recursively and evaluate the **Author** and **Maintainers** of the **installed** dependencies included in the set path.
 
 ### credits( path )
 
