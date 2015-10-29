@@ -4,6 +4,7 @@ var fs          = require( 'fs' );
 var path        = require( 'path' );
 var creditUtil  = require( './util/credit' );
 var packageUtil = require( './util/package' );
+var Promise     = require( 'es6-promise' ).Promise;
 
 
 /**
