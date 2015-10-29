@@ -2,6 +2,7 @@
 
 var fs          = require( 'fs' );
 var path        = require( 'path' );
+var Promise     = require( 'bluebird' );
 var creditUtil  = require( './util/credit' );
 var packageUtil = require( './util/package' );
 
