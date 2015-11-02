@@ -20,7 +20,7 @@ var Promise     = require( 'es6-promise' ).Promise;
  */
 function readDirectory( projectPath, credits, seen ) {
   credits = credits || [];
-  seen = seen || [];
+  seen    = seen || [];
 
   if ( seen[ projectPath ] ) {
     return credits;
