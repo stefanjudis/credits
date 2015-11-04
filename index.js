@@ -18,8 +18,15 @@ var Promise     = require( 'es6-promise' ).Promise;
  *
  * @tested
  */
-function readDirectory( projectPath, credits ) {
+function readDirectory( projectPath, credits, seen ) {
   credits = credits || [];
+  seen    = seen || [];
+
+  if ( seen[ projectPath ] ) {
+    return credits;
+  }
+
+  seen[ projectPath ] = true;
 
   var depPath = path.join( projectPath, 'node_modules' );
 
@@ -47,7 +54,7 @@ function readDirectory( projectPath, credits ) {
         } );
       }
 
-      readDirectory( path.join( depPath, name ), credits );
+      readDirectory( fs.realpathSync( path.join( depPath, name ) ), credits, seen );
     }
   } );
 

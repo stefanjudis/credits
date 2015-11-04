@@ -22,6 +22,7 @@ test( 'credits - folder exists', t => {
       'utf8'
     );
 
+
     fs.mkdirSync( `${path}/node_modules/bar/node_modules` );
     fs.mkdirSync( `${path}/node_modules/bar/node_modules/boom` );
 
@@ -56,6 +57,28 @@ test( 'credits - folder exists', t => {
       'utf8'
     );
 
+
+
+    fs.mkdirSync( `${path}/linked/` );
+    fs.writeFileSync(
+      `${path}/linked/package.json`,
+      JSON.stringify( { author : 'Bob Loblaw' } ),
+      'utf8'
+    );
+    fs.symlinkSync( `${path}/linked`, `${path}/node_modules/linked` );
+
+
+    fs.mkdirSync( `${path}/node_modules/cycle` );
+    fs.writeFileSync(
+      `${path}/node_modules/cycle/package.json`,
+      JSON.stringify( { author : 'Bob Loblaw' } ),
+      'utf8'
+    );
+
+    fs.mkdirSync( `${path}/node_modules/cycle/node_modules` );
+    fs.symlinkSync( `${path}/node_modules/cycle`, `${path}/node_modules/cycle/node_modules/cycle` );
+
+
     credits( path )
       .then( credits => {
         t.same( credits[ 0 ].name, 'Alice Bobson' );
@@ -64,11 +87,14 @@ test( 'credits - folder exists', t => {
         t.same( credits[ 1 ].name, 'Bob Calsow' );
         t.same( credits[ 1 ].packages, [ 'boing', 'foo' ] );
 
-        t.same( credits[ 2 ].name, 'Randy Ran' );
-        t.same( credits[ 2 ].packages, [ 'baz' ] );
+        t.same( credits[ 2 ].name, 'Bob Loblaw' );
+        t.same( credits[ 2 ].packages, [ 'cycle', 'linked' ] );
 
-        t.same( credits[ 3 ].name, 'Bobby Bob' );
+        t.same( credits[ 3 ].name, 'Randy Ran' );
         t.same( credits[ 3 ].packages, [ 'baz' ] );
+
+        t.same( credits[ 4 ].name, 'Bobby Bob' );
+        t.same( credits[ 4 ].packages, [ 'baz' ] );
 
         cleanUpCb();
 
