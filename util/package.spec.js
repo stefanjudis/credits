@@ -1,4 +1,5 @@
 import test from 'ava';
+import { authors, index } from 'all-stars';
 import packageUtil from './package';
 
 test( 'getAuthor - author is a string', t => {
@@ -74,6 +75,43 @@ test( 'getAuthor - author is not defined', t => {
   let author = packageUtil.getAuthor( packageJson );
 
   t.same( author, false );
+  t.end();
+} );
+
+test( 'getAuthor - author in all-stars has additional properties', t => {
+  let packageJson = {
+    author : {
+      name  : 'Archimedes of Syracuse',
+      email : 'archimedes@syracuse.io',
+      url   : 'https://en.wikipedia.org/wiki/Archimedes'
+    }
+  };
+
+  // add our fake author to all-stars for mocking purposes
+  let allStarAuthors = authors();
+  let allStarIndex = index();
+
+  let fakeAuthorId = 'PiDude314159265359';
+
+  allStarAuthors[ fakeAuthorId ] = {
+    npmUsers    : [ fakeAuthorId ],
+    names       : [ packageJson.author.name ],
+    emails      : [ packageJson.author.email ],
+    githubUsers : [ fakeAuthorId ],
+    twitters    : [ fakeAuthorId ]
+  };
+
+  allStarIndex[ packageJson.author.name ] = fakeAuthorId;
+  allStarIndex[ packageJson.author.email ] = fakeAuthorId;
+
+  // test
+  let author = packageUtil.getAuthor( packageJson );
+
+  t.is( author.name, packageJson.author.name );
+  t.is( author.email, packageJson.author.email );
+  t.is( author.npm, fakeAuthorId );
+  t.is( author.github, fakeAuthorId );
+  t.is( author.twitter, fakeAuthorId );
   t.end();
 } );
 

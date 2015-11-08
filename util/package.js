@@ -1,5 +1,32 @@
 'use strict';
 
+var allStars = require( 'all-stars' );
+
+/**
+ * Check all-stars db for given person and normalize person data if found.
+ *
+ * @param  {Object|false} person object representing author or maintainer
+ *
+ * @return {Object|false}        same object given, possibly modified or augmented
+ */
+function getAllStar( person ) {
+  if ( !person ) return person;
+
+  var allStar = allStars( person );
+  if ( allStar ) {
+    // normalize name and email
+    var name = allStar.name();
+    var email = allStar.email();
+    if ( name ) person.name = name;
+    if ( email ) person.email = email;
+    // add values only defined in all-stars
+    person.npm = allStar.npmUser();
+    person.github = allStar.githubUser();
+    person.twitter = allStar.twitter();
+  }
+  return person;
+}
+
 /**
  * Parse npm string shorthand into object representation
  *
@@ -10,11 +37,11 @@
 function getPersonObject( personString ) {
   var regex = personString.match( /^(.*?)\s?(<(.*)>)?\s?(\((.*)\))?\s?$/ );
 
-  return {
+  return getAllStar( {
     name  : regex[ 1 ],
     email : regex[ 3 ],
     url   : regex[ 5 ]
-  };
+  } );
 }
 
 
@@ -32,9 +59,9 @@ function getAuthor( packageJson ) {
     return getPersonObject( packageJson.author );
   }
 
-  return packageJson.author ?
+  return getAllStar( packageJson.author ?
           packageJson.author :
-          false;
+          false );
 }
 
 
@@ -54,7 +81,7 @@ function getMaintainers( packageJson ) {
         return getPersonObject( maintainer );
       }
 
-      return maintainer;
+      return getAllStar( maintainer );
     } );
   }
 
