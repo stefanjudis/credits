@@ -4,8 +4,8 @@
   "description": "Find out on whose work your project is based on",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint *.js util/*",
-    "test": "npm run lint && nyc ava *.spec.js ./**/*.spec.js",
+    "lint": "eslint *.js util/* lib/*",
+    "test": "npm run lint && nyc ava *.spec.js ./**/*.spec.js ./lib/**/*.spec.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {

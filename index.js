@@ -1,61 +1,31 @@
 'use strict';
 
-var fs          = require( 'fs' );
-var path        = require( 'path' );
-var creditUtil  = require( './util/credit' );
-var packageUtil = require( './util/package' );
-var Promise     = require( 'es6-promise' ).Promise;
+var fs            = require( 'fs' );
+var path          = require( 'path' );
+var config        = require( './config' );
+var creditUtil    = require( './util/credit' );
+var packageUtil   = require( './util/package' );
+var reportersUtil = require( './util/reporters' );
+var Promise       = require( 'es6-promise' ).Promise;
 
 
 /**
  * Read project root and evaluate dependency credits
- * -> this will be run recursively
+ * for all supported package managers
  *
- * @param  {String} projectPath       absolute path to project root
- * @param  {Array|undefined} credits  list of credits
+ * @param  {String} projectPath  absolute path to project root
  *
- * @return {Array}                    list of credits
+ * @return {Array}               list of credits
  *
  * @tested
  */
-function readDirectory( projectPath, credits, seen ) {
-  credits = credits || [];
-  seen    = seen || [];
+function readDirectory( projectPath ) {
+  var credits = [];
 
-  if ( seen[ projectPath ] ) {
-    return credits;
-  }
+  var reporters = reportersUtil.getReporters( config );
 
-  seen[ projectPath ] = true;
-
-  var depPath = path.join( projectPath, 'node_modules' );
-
-  // projects without dependencies won't have
-  // a node_modules folder
-  try {
-    var deps = fs.readdirSync( depPath );
-  } catch( error ) {
-    return credits;
-  }
-
-  deps.forEach( function( name ) {
-    if ( name !== '.bin' ) {
-      var packageJson = require( path.join( depPath, name, 'package.json' ) );
-      var author      = packageUtil.getAuthor( packageJson );
-      var maintainers = packageUtil.getMaintainers( packageJson );
-
-      if ( author ) {
-        credits = creditUtil.addCreditToCredits( credits, author, name );
-      }
-
-      if ( maintainers ) {
-        maintainers.forEach( function( maintainer ) {
-          credits = creditUtil.addCreditToCredits( credits, maintainer, name );
-        } );
-      }
-
-      readDirectory( fs.realpathSync( path.join( depPath, name ) ), credits, seen );
-    }
+  reporters.forEach( function( reporter ) {
+    credits = credits.concat( reporter( projectPath ) );
   } );
 
   return credits;
