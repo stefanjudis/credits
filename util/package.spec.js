@@ -88,12 +88,9 @@ test( 'getAuthor - author in all-stars has additional properties', t => {
   };
 
   // add our fake author to all-stars for mocking purposes
-  let allStarAuthors = authors();
-  let allStarIndex = index();
-
   let fakeAuthorId = 'PiDude314159265359';
 
-  allStarAuthors[ fakeAuthorId ] = {
+  authors[ fakeAuthorId ] = {
     npmUsers    : [ fakeAuthorId ],
     names       : [ packageJson.author.name ],
     emails      : [ packageJson.author.email ],
@@ -101,16 +98,16 @@ test( 'getAuthor - author in all-stars has additional properties', t => {
     twitters    : [ fakeAuthorId ]
   };
 
-  allStarIndex[ packageJson.author.name ] = fakeAuthorId;
-  allStarIndex[ packageJson.author.email ] = fakeAuthorId;
+  index[ packageJson.author.name ] = fakeAuthorId;
+  index[ packageJson.author.email ] = fakeAuthorId;
 
   // test
   let author = packageUtil.getAuthor( packageJson );
 
   t.is( author.name, packageJson.author.name );
   t.is( author.email, packageJson.author.email );
-  t.is( author.npm, fakeAuthorId );
-  t.is( author.github, fakeAuthorId );
+  t.is( author.npmUser, fakeAuthorId );
+  t.is( author.githubUser, fakeAuthorId );
   t.is( author.twitter, fakeAuthorId );
   t.end();
 } );

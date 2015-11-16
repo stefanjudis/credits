@@ -1,30 +1,18 @@
 'use strict';
 
 var allStars = require( 'all-stars' );
+var objectAssign = require( 'object-assign' );
 
 /**
- * Check all-stars db for given person and normalize person data if found.
+ * Check all-stars db for given person and assign to person if found.
  *
- * @param  {Object|false} person object representing author or maintainer
+ * @param  {Object} person object representing author or maintainer
  *
- * @return {Object|false}        same object given, possibly modified or augmented
+ * @return {Object}        same object given, possibly modified or augmented
  */
 function getAllStar( person ) {
-  if ( !person ) return person;
-
-  var allStar = allStars( person );
-  if ( allStar ) {
-    // normalize name and email
-    var name = allStar.name();
-    var email = allStar.email();
-    if ( name ) person.name = name;
-    if ( email ) person.email = email;
-    // add values only defined in all-stars
-    person.npm = allStar.npmUser();
-    person.github = allStar.githubUser();
-    person.twitter = allStar.twitter();
-  }
-  return person;
+  // override properties from all-stars if available
+  return objectAssign( person, allStars( person ) );
 }
 
 /**
@@ -59,9 +47,9 @@ function getAuthor( packageJson ) {
     return getPersonObject( packageJson.author );
   }
 
-  return getAllStar( packageJson.author ?
-          packageJson.author :
-          false );
+  return packageJson.author ?
+          getAllStar( packageJson.author ) :
+          false;
 }
 
 
