@@ -12,7 +12,8 @@ var objectAssign = require( 'object-assign' );
  */
 function getAllStar( person ) {
   // override properties from all-stars if available
-  return objectAssign( person, allStars( person ) );
+  var allStar = allStars( person );
+  return allStar ? objectAssign( person, allStar.subset() ) : person;
 }
 
 /**

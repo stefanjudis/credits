@@ -106,8 +106,8 @@ test( 'getAuthor - author in all-stars has additional properties', t => {
 
   t.is( author.name, packageJson.author.name );
   t.is( author.email, packageJson.author.email );
-  t.is( author.npmUser, fakeAuthorId );
-  t.is( author.githubUser, fakeAuthorId );
+  t.is( author.npm, fakeAuthorId );
+  t.is( author.github, fakeAuthorId );
   t.is( author.twitter, fakeAuthorId );
   t.end();
 } );
