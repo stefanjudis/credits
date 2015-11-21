@@ -26,6 +26,8 @@
     "tmp": "0.0.28"
   },
   "dependencies": {
-    "es6-promise": "^3.0.2"
+    "all-stars": "^1.1.0",
+    "es6-promise": "^3.0.2",
+    "object-assign": "^4.0.1"
   }
 }
