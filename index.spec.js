@@ -14,7 +14,6 @@ test( 'credits - folder exists', t => {
       'utf8'
     );
 
-
     fs.mkdirSync( `${path}/node_modules/bar` );
     fs.writeFileSync(
       `${path}/node_modules/bar/package.json`,
@@ -22,10 +21,8 @@ test( 'credits - folder exists', t => {
       'utf8'
     );
 
-
     fs.mkdirSync( `${path}/node_modules/bar/node_modules` );
     fs.mkdirSync( `${path}/node_modules/bar/node_modules/boom` );
-
     fs.writeFileSync(
       `${path}/node_modules/bar/node_modules/boom/package.json`,
       JSON.stringify( { author : { name : 'Alice Bobson' } } ),
@@ -50,7 +47,6 @@ test( 'credits - folder exists', t => {
 
     fs.mkdirSync( `${path}/node_modules/baz/node_modules` );
     fs.mkdirSync( `${path}/node_modules/baz/node_modules/boing` );
-
     fs.writeFileSync(
       `${path}/node_modules/baz/node_modules/boing/package.json`,
       JSON.stringify( { author : 'Bob Calsow <bob@calsow.io>' } ),

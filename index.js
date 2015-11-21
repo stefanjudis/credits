@@ -39,8 +39,16 @@ function readDirectory( projectPath, credits, seen ) {
   }
 
   deps.forEach( function( name ) {
-    if ( name !== '.bin' ) {
-      var packageJson = require( path.join( depPath, name, 'package.json' ) );
+    var directoryPath = path.join( depPath, name );
+
+    if (
+      name !== '.bin' &&
+      (
+        fs.lstatSync( directoryPath ).isDirectory() ||
+        fs.lstatSync( directoryPath ).isSymbolicLink()
+      )
+    ) {
+      var packageJson = require( path.join( directoryPath, 'package.json' ) );
       var author      = packageUtil.getAuthor( packageJson );
       var maintainers = packageUtil.getMaintainers( packageJson );
 
@@ -54,7 +62,7 @@ function readDirectory( projectPath, credits, seen ) {
         } );
       }
 
-      readDirectory( fs.realpathSync( path.join( depPath, name ) ), credits, seen );
+      readDirectory( fs.realpathSync( directoryPath ), credits, seen );
     }
   } );
 
