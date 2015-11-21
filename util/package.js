@@ -1,5 +1,21 @@
 'use strict';
 
+var allStars = require( 'all-stars' );
+var objectAssign = require( 'object-assign' );
+
+/**
+ * Check all-stars db for given person and assign to person if found.
+ *
+ * @param  {Object} person object representing author or maintainer
+ *
+ * @return {Object}        same object given, possibly modified or augmented
+ */
+function getAllStar( person ) {
+  // override properties from all-stars if available
+  var allStar = allStars( person );
+  return allStar ? objectAssign( person, allStar.subset() ) : person;
+}
+
 /**
  * Parse npm string shorthand into object representation
  *
@@ -10,11 +26,11 @@
 function getPersonObject( personString ) {
   var regex = personString.match( /^(.*?)\s?(<(.*)>)?\s?(\((.*)\))?\s?$/ );
 
-  return {
+  return getAllStar( {
     name  : regex[ 1 ],
     email : regex[ 3 ],
     url   : regex[ 5 ]
-  };
+  } );
 }
 
 
@@ -33,7 +49,7 @@ function getAuthor( packageJson ) {
   }
 
   return packageJson.author ?
-          packageJson.author :
+          getAllStar( packageJson.author ) :
           false;
 }
 
@@ -54,7 +70,7 @@ function getMaintainers( packageJson ) {
         return getPersonObject( maintainer );
       }
 
-      return maintainer;
+      return getAllStar( maintainer );
     } );
   }
 
