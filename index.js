@@ -5,7 +5,7 @@ var path          = require( 'path' );
 var config        = require( './config' );
 var creditUtil    = require( './util/credit' );
 var packageUtil   = require( './util/package' );
-var reportersUtil = require( './util/reporters' );
+var analyzersUtil = require( './util/analyzers' );
 var Promise       = require( 'es6-promise' ).Promise;
 
 
@@ -22,10 +22,10 @@ var Promise       = require( 'es6-promise' ).Promise;
 function readDirectory( projectPath ) {
   var credits = [];
 
-  var reporters = reportersUtil.getReporters( config );
+  var analyzers = analyzersUtil.getAnalyzers( config );
 
-  reporters.forEach( function( reporter ) {
-    credits = credits.concat( reporter( projectPath ) );
+  analyzers.forEach( function( analyzer ) {
+    credits = credits.concat( analyzer( projectPath ) );
   } );
 
   return credits;

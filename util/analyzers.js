@@ -4,25 +4,25 @@ var fs      = require( 'fs' );
 var path    = require( 'path' );
 
 /**
- * Get all available reporters
+ * Get all available analyzers
  *
  * @param  {Object} config project configuration
  *
  * @return {Array}         list of reporter methods
  */
-function getReporters( config ) {
-  var reporters;
+function getAnalyzers( config ) {
+  var analyzers;
   var methods  = [];
-  var basePath = config.filePaths.reporters;
+  var basePath = config.filePaths.analyzers;
 
   try {
-    var reporters = fs.readdirSync( basePath );
+    var analyzers = fs.readdirSync( basePath );
   } catch( error ) {
     console.log( error );
-    throw new Error( 'filePaths \'reporters\' does not exist' );
+    throw new Error( 'filePaths \'analyzers\' does not exist' );
   }
 
-  reporters.forEach( function( reporter ) {
+  analyzers.forEach( function( reporter ) {
     methods.push( require( path.join( basePath, reporter, 'index' ) ) );
   } );
 
@@ -30,5 +30,5 @@ function getReporters( config ) {
 }
 
 module.exports = {
-  getReporters : getReporters
+  getAnalyzers : getAnalyzers
 };
