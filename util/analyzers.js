@@ -12,7 +12,7 @@ var path    = require( 'path' );
  */
 function getAnalyzers( config ) {
   var analyzers;
-  var methods  = [];
+  var methods  = {};
   var basePath = config.filePaths.analyzers;
 
   try {
@@ -22,8 +22,8 @@ function getAnalyzers( config ) {
     throw new Error( 'filePaths \'analyzers\' does not exist' );
   }
 
-  analyzers.forEach( function( reporter ) {
-    methods.push( require( path.join( basePath, reporter, 'index' ) ) );
+  analyzers.forEach( function( analyzer ) {
+    methods[ analyzer ] = require( path.join( basePath, analyzer, 'index' ) );
   } );
 
   return methods;

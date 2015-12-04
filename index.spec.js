@@ -16,8 +16,8 @@ test( 'credits - folder exists', t => {
 
     credits( path )
       .then( credits => {
-        t.same( credits[ 0 ].name, 'Bob Calsow' );
-        t.same( credits[ 0 ].packages, [ 'foo' ] );
+        t.same( credits.npm[ 0 ].name, 'Bob Calsow' );
+        t.same( credits.npm[ 0 ].packages, [ 'foo' ] );
 
         cleanUpCb();
 

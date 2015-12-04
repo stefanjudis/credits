@@ -22,7 +22,7 @@ test( 'getAnalyzers - iterate over all availalbe analyzers', t => {
 
     let analyzers = analyzersUtil.getAnalyzers( config );
 
-    t.same( analyzers[ 0 ], 'getCredits' );
+    t.same( analyzers.npm, 'getCredits' );
 
     cleanUpCb();
 

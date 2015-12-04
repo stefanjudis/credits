@@ -14,36 +14,39 @@ var Promise       = require( 'es6-promise' ).Promise;
  * for all supported package managers
  *
  * @param  {String} projectPath  absolute path to project root
+ * @param  {Array}  analyzers    list of availalbe analyzers
  *
  * @return {Array}               list of credits
  *
  * @tested
  */
-function readDirectory( projectPath ) {
-  var credits = [];
+function readDirectory( projectPath, analyzers ) {
+  var credits = {};
 
-  var analyzers = analyzersUtil.getAnalyzers( config );
-
-  analyzers.forEach( function( analyzer ) {
-    credits = credits.concat( analyzer( projectPath ) );
-  } );
+  for ( var analyzer in analyzers ) {
+    credits[ analyzer ] = analyzers[ analyzer ]( projectPath );
+  };
 
   return credits;
 }
 
 module.exports = function( projectPath ) {
+  var analyzers = analyzersUtil.getAnalyzers( config );
+
   return new Promise(
     function( resolve, reject ) {
       if ( fs.existsSync( projectPath ) ) {
         try {
-          var credits = readDirectory( projectPath );
+          var credits = readDirectory( projectPath, analyzers );
         } catch( e ) {
           return reject( e );
         }
 
-        credits = credits.sort( function( a, b ) {
-          return b.packages.length - a.packages.length;
-        } );
+        for ( var analyzer in analyzers ) {
+          credits[ analyzer ] = credits[ analyzer ].sort( function( a, b ) {
+            return b.packages.length - a.packages.length;
+          } );
+        };
 
         resolve( credits );
       } else {
