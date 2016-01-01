@@ -2,7 +2,7 @@ import test from 'ava';
 import creditUtil from './credit';
 
 
-test( 'getCredit - email is included', t => {
+test.cb( 'getCredit - email is included', t => {
   let credits = [ { email : 'bob@calsow.io', url : 'http://4waisenkinder.de' } ];
 
   let credit = creditUtil.getCredit( credits, { email : 'bob@calsow.io' } );
@@ -11,7 +11,7 @@ test( 'getCredit - email is included', t => {
   t.end();
 } );
 
-test( 'getCredit - only name is included', t => {
+test.cb( 'getCredit - only name is included', t => {
   let credits = [ { name : 'Bob Calsow', url : 'http://4waisenkinder.de' } ];
 
   let credit = creditUtil.getCredit( credits, { name : 'Bob Calsow' } );
@@ -20,7 +20,7 @@ test( 'getCredit - only name is included', t => {
   t.end();
 } );
 
-test( 'getCredit - particular credit is not included', t => {
+test.cb( 'getCredit - particular credit is not included', t => {
   let credits = [];
 
   let credit = creditUtil.getCredit( credits, { name : 'Stefan Judis' } );
@@ -30,7 +30,7 @@ test( 'getCredit - particular credit is not included', t => {
 } );
 
 
-test( 'addCreditToCredits - credit is not included yet', t => {
+test.cb( 'addCreditToCredits - credit is not included yet', t => {
   let credits = [];
 
   credits = creditUtil.addCreditToCredits( credits, { name : 'Bob Calsow' }, 'foo' );
@@ -39,7 +39,7 @@ test( 'addCreditToCredits - credit is not included yet', t => {
   t.end();
 } );
 
-test( 'addCreditToCredits - credit is included', t => {
+test.cb( 'addCreditToCredits - credit is included', t => {
   let credits = [ { name : 'Bob Calsow', packages : [ 'foo' ] } ];
 
   credits = creditUtil.addCreditToCredits( credits, { name : 'Bob Calsow' }, 'bar' );

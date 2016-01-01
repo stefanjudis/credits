@@ -3,7 +3,7 @@ import credits from './';
 import tmp from 'tmp';
 import fs from 'fs';
 
-test( 'credits - folder exists', t => {
+test.cb( 'credits - folder exists', t => {
   tmp.dir( { unsafeCleanup : true }, ( error, path, cleanUpCb ) => {
     fs.mkdirSync( `${path}/node_modules` );
 
@@ -27,7 +27,7 @@ test( 'credits - folder exists', t => {
   } );
 } );
 
-test( 'credits - folder does not exist', t => {
+test.cb( 'credits - folder does not exist', t => {
   credits( '/path/that/does/not/exist' )
     .catch( error => {
       t.same( error.message, '/path/that/does/not/exist does not exist' );

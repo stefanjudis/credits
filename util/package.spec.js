@@ -2,7 +2,7 @@ import test from 'ava';
 import { authors, index } from 'all-stars';
 import packageUtil from './package';
 
-test( 'getAuthor - author is a string', t => {
+test.cb( 'getAuthor - author is a string', t => {
   // only short hand name
   let packageJson1 = {
     author : 'Bob Calsow'
@@ -54,7 +54,7 @@ test( 'getAuthor - author is a string', t => {
   t.end();
 } );
 
-test( 'getAuthor - author is an object', t => {
+test.cb( 'getAuthor - author is an object', t => {
   let packageJson = {
     author : {
       name  : 'Bob Calsow',
@@ -69,7 +69,7 @@ test( 'getAuthor - author is an object', t => {
   t.end();
 } );
 
-test( 'getAuthor - author is not defined', t => {
+test.cb( 'getAuthor - author is not defined', t => {
   let packageJson = {};
 
   let author = packageUtil.getAuthor( packageJson );
@@ -78,7 +78,7 @@ test( 'getAuthor - author is not defined', t => {
   t.end();
 } );
 
-test( 'getAuthor - author in all-stars has additional properties', t => {
+test.cb( 'getAuthor - author in all-stars has additional properties', t => {
   let packageJson = {
     author : {
       name  : 'Archimedes of Syracuse',
@@ -113,7 +113,7 @@ test( 'getAuthor - author in all-stars has additional properties', t => {
 } );
 
 
-test( 'getMaintainers - maintainers is not defined', t => {
+test.cb( 'getMaintainers - maintainers is not defined', t => {
   let packageJson = {
     maintainers : [
       'Bob Calsow <bob@calsow.io> (http://4waisenkinder.de)',
@@ -138,7 +138,7 @@ test( 'getMaintainers - maintainers is not defined', t => {
   t.end();
 } );
 
-test( 'getMaintainers - maintainers is an invalid string', t => {
+test.cb( 'getMaintainers - maintainers is an invalid string', t => {
   let packageJson = {
     maintainers : 'Bob Calsow <bob@calsow.io> (http://4waisenkinder.de)'
   };
@@ -152,7 +152,7 @@ test( 'getMaintainers - maintainers is an invalid string', t => {
   t.end();
 } );
 
-test( 'getMaintainers - maintainers is not defined', t => {
+test.cb( 'getMaintainers - maintainers is not defined', t => {
   let packageJson = {};
 
   let maintainers = packageUtil.getMaintainers( packageJson );
