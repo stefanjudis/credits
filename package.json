@@ -21,7 +21,7 @@
   "devDependencies": {
     "ava": "^0.11.0",
     "coveralls": "^2.11.4",
-    "eslint": "^1.7.3",
+    "eslint": "^3.2.1",
     "nyc": "^5.0.1",
     "tmp": "0.0.28"
   },
