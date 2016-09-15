@@ -20,7 +20,7 @@
   "homepage": "https://github.com/stefanjudis/credits#readme",
   "devDependencies": {
     "ava": "^0.11.0",
-    "coveralls": "^2.11.4",
+    "coveralls": "^2.11.13",
     "eslint": "^1.7.3",
     "nyc": "^5.0.1",
     "tmp": "0.0.28"
