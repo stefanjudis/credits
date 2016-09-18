@@ -23,7 +23,7 @@
     "coveralls": "^2.11.4",
     "eslint": "^1.7.3",
     "nyc": "^5.0.1",
-    "tmp": "0.0.28"
+    "tmp": "0.0.29"
   },
   "dependencies": {
     "all-stars": "^1.1.0",
