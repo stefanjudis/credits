@@ -44,6 +44,18 @@ function getPersonObject( personString ) {
  * @tested
  */
 function getAuthor( packageJson ) {
+  if ( packageJson.authors instanceof Array ) {
+    packageJson.authors = packageJson.authors.map( function( author ) {
+      if ( typeof author === 'string' ) {
+        return getPersonObject( author );
+      }
+
+      return getAllStar( author );
+    } );
+
+    return packageJson.authors ? packageJson.authors : false;
+  }
+
   if ( typeof packageJson.author === 'string' ) {
     return getPersonObject( packageJson.author );
   }
