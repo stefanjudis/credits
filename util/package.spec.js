@@ -10,7 +10,7 @@ test.cb( 'getAuthor - author is a string', t => {
 
   let author1 = packageUtil.getAuthor( packageJson1 );
 
-  t.same(
+  t.deepEqual(
     author1,
     { name : 'Bob Calsow', email : undefined, url : undefined }
   );
@@ -22,7 +22,7 @@ test.cb( 'getAuthor - author is a string', t => {
 
   let author2 = packageUtil.getAuthor( packageJson2 );
 
-  t.same(
+  t.deepEqual(
     author2,
     { name : 'Bob Calsow', email : 'bob@calsow.io', url : undefined }
   );
@@ -34,7 +34,7 @@ test.cb( 'getAuthor - author is a string', t => {
 
   let author3 = packageUtil.getAuthor( packageJson3 );
 
-  t.same(
+  t.deepEqual(
     author3,
     { name : 'Bob Calsow', email : 'bob@calsow.io', url : 'http://4waisenkinder.de' }
   );
@@ -46,7 +46,7 @@ test.cb( 'getAuthor - author is a string', t => {
 
   let author4 = packageUtil.getAuthor( packageJson4 );
 
-  t.same(
+  t.deepEqual(
     author4,
     { name : 'Bob Calsow', email : undefined, url : 'http://4waisenkinder.de' }
   );
@@ -65,7 +65,7 @@ test.cb( 'getAuthor - author is an object', t => {
 
   let author = packageUtil.getAuthor( packageJson );
 
-  t.same( author, packageJson.author );
+  t.deepEqual( author, packageJson.author );
   t.end();
 } );
 
@@ -74,7 +74,7 @@ test.cb( 'getAuthor - author is not defined', t => {
 
   let author = packageUtil.getAuthor( packageJson );
 
-  t.same( author, false );
+  t.deepEqual( author, false );
   t.end();
 } );
 
@@ -127,11 +127,11 @@ test.cb( 'getMaintainers - maintainers is not defined', t => {
 
   let maintainers = packageUtil.getMaintainers( packageJson );
 
-  t.same(
+  t.deepEqual(
     maintainers[ 0 ],
     { name : 'Bob Calsow', email : 'bob@calsow.io', url : 'http://4waisenkinder.de' }
   );
-  t.same(
+  t.deepEqual(
     maintainers[ 1 ],
     { name : 'Foo bar', email : 'foo@bar.io', url : 'http://foo.bar' }
   );
@@ -145,7 +145,7 @@ test.cb( 'getMaintainers - maintainers is an invalid string', t => {
 
   let maintainers = packageUtil.getMaintainers( packageJson );
 
-  t.same(
+  t.deepEqual(
     maintainers[ 0 ],
     { name : 'Bob Calsow', email : 'bob@calsow.io', url : 'http://4waisenkinder.de' }
   );
@@ -157,6 +157,6 @@ test.cb( 'getMaintainers - maintainers is not defined', t => {
 
   let maintainers = packageUtil.getMaintainers( packageJson );
 
-  t.same( maintainers, false );
+  t.deepEqual( maintainers, false );
   t.end();
 } );

@@ -7,7 +7,7 @@ test.cb( 'getCredit - email is included', t => {
 
   let credit = creditUtil.getCredit( credits, { email : 'bob@calsow.io' } );
 
-  t.same( credit, { email : 'bob@calsow.io', url : 'http://4waisenkinder.de' } );
+  t.deepEqual( credit, { email : 'bob@calsow.io', url : 'http://4waisenkinder.de' } );
   t.end();
 } );
 
@@ -16,7 +16,7 @@ test.cb( 'getCredit - only name is included', t => {
 
   let credit = creditUtil.getCredit( credits, { name : 'Bob Calsow' } );
 
-  t.same( credit, { name : 'Bob Calsow', url : 'http://4waisenkinder.de' } );
+  t.deepEqual( credit, { name : 'Bob Calsow', url : 'http://4waisenkinder.de' } );
   t.end();
 } );
 
@@ -25,7 +25,7 @@ test.cb( 'getCredit - particular credit is not included', t => {
 
   let credit = creditUtil.getCredit( credits, { name : 'Stefan Judis' } );
 
-  t.same( credit, false );
+  t.deepEqual( credit, false );
   t.end();
 } );
 
@@ -35,7 +35,7 @@ test.cb( 'addCreditToCredits - credit is not included yet', t => {
 
   credits = creditUtil.addCreditToCredits( credits, { name : 'Bob Calsow' }, 'foo' );
 
-  t.same( credits, [ { name : 'Bob Calsow', packages : [ 'foo' ] } ] );
+  t.deepEqual( credits, [ { name : 'Bob Calsow', packages : [ 'foo' ] } ] );
   t.end();
 } );
 
@@ -44,6 +44,6 @@ test.cb( 'addCreditToCredits - credit is included', t => {
 
   credits = creditUtil.addCreditToCredits( credits, { name : 'Bob Calsow' }, 'bar' );
 
-  t.same( credits, [ { name : 'Bob Calsow', packages : [ 'foo', 'bar' ] } ] );
+  t.deepEqual( credits, [ { name : 'Bob Calsow', packages : [ 'foo', 'bar' ] } ] );
   t.end();
 } );

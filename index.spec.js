@@ -77,20 +77,20 @@ test.cb( 'credits - folder exists', t => {
 
     credits( path )
       .then( credits => {
-        t.same( credits[ 0 ].name, 'Alice Bobson' );
-        t.same( credits[ 0 ].packages, [ 'bar', 'boom', 'baz' ] );
+        t.deepEqual( credits[ 0 ].name, 'Alice Bobson' );
+        t.deepEqual( credits[ 0 ].packages, [ 'bar', 'boom', 'baz' ] );
 
-        t.same( credits[ 1 ].name, 'Bob Calsow' );
-        t.same( credits[ 1 ].packages, [ 'boing', 'foo' ] );
+        t.deepEqual( credits[ 1 ].name, 'Bob Calsow' );
+        t.deepEqual( credits[ 1 ].packages, [ 'boing', 'foo' ] );
 
-        t.same( credits[ 2 ].name, 'Bob Loblaw' );
-        t.same( credits[ 2 ].packages, [ 'cycle', 'linked' ] );
+        t.deepEqual( credits[ 2 ].name, 'Bob Loblaw' );
+        t.deepEqual( credits[ 2 ].packages, [ 'cycle', 'linked' ] );
 
-        t.same( credits[ 3 ].name, 'Randy Ran' );
-        t.same( credits[ 3 ].packages, [ 'baz' ] );
+        t.deepEqual( credits[ 3 ].name, 'Randy Ran' );
+        t.deepEqual( credits[ 3 ].packages, [ 'baz' ] );
 
-        t.same( credits[ 4 ].name, 'Bobby Bob' );
-        t.same( credits[ 4 ].packages, [ 'baz' ] );
+        t.deepEqual( credits[ 4 ].name, 'Bobby Bob' );
+        t.deepEqual( credits[ 4 ].packages, [ 'baz' ] );
 
         cleanUpCb();
 
@@ -103,7 +103,7 @@ test.cb( 'credits - folder exists', t => {
 test.cb( 'credits - folder does not exist', t => {
   credits( '/path/that/does/not/exist' )
     .catch( error => {
-      t.same( error.message, '/path/that/does/not/exist does not exist' );
+      t.deepEqual( error.message, '/path/that/does/not/exist does not exist' );
       t.end();
     } );
 } );

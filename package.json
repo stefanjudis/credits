@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint *.js util/*",
-    "test": "npm run lint && nyc ava *.spec.js ./**/*.spec.js",
+    "test": "npm run lint && nyc ava *.spec.js ./util/*.spec.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -19,11 +19,11 @@
   },
   "homepage": "https://github.com/stefanjudis/credits#readme",
   "devDependencies": {
-    "ava": "^0.11.0",
+    "ava": "^0.16.0",
     "coveralls": "^2.11.4",
-    "eslint": "^1.7.3",
-    "nyc": "^5.0.1",
-    "tmp": "0.0.28"
+    "eslint": "^3.7.1",
+    "nyc": "^8.3.1",
+    "tmp": "0.0.29"
   },
   "dependencies": {
     "all-stars": "^1.1.0",
