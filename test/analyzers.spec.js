@@ -1,7 +1,8 @@
 import test from 'ava';
 import tmp from 'tmp';
 import fs from 'fs';
-import analyzersUtil from './analyzers';
+
+import analyzersUtil from '../lib/analyzers';
 
 test.cb( 'getAnalyzers - iterate over all availalbe analyzers', t => {
   tmp.dir( { unsafeCleanup : true }, ( error, path, cleanUpCb ) => {

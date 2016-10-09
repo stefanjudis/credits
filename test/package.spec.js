@@ -1,6 +1,7 @@
 import test from 'ava';
 import { authors, index } from 'all-stars';
-import packageUtil from './package';
+
+import packageUtil from '../lib/package';
 
 test( 'getAuthor - author is a string', t => {
   // only short hand name

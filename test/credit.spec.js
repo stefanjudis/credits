@@ -1,6 +1,6 @@
 import test from 'ava';
-import creditUtil from './credit';
 
+import creditUtil from '../lib/credit';
 
 test( 'getCredit - email is included', t => {
   let credits = [ { email : 'bob@calsow.io', url : 'http://4waisenkinder.de' } ];

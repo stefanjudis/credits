@@ -1,7 +1,8 @@
 import test from 'ava';
-import credits from './';
 import tmp from 'tmp';
 import fs from 'fs';
+
+import credits from '../';
 
 test.cb( 'credits - folder exists', t => {
   tmp.dir( { unsafeCleanup : true }, ( error, path, cleanUpCb ) => {
