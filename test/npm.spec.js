@@ -8,8 +8,8 @@ import getCredits from '../lib/analyzers/npm';
 const fixtures = path.resolve( './fixtures' );
 
 test( 'getCredits - get availalbe npm credits', t => {
-  fs.ensureLinkSync( `${fixtures}/linked`, `${fixtures}/node_modules/linked` );
-  fs.ensureLinkSync( `${fixtures}/node_modules/cycle`, `${fixtures}/node_modules/cycle/node_modules/cycle` );
+  fs.ensureSymlinkSync( `${fixtures}/linked`, `${fixtures}/node_modules/linked` );
+  fs.ensureSymlinkSync( `${fixtures}/node_modules/cycle`, `${fixtures}/node_modules/cycle/node_modules/cycle` );
 
   const credits = getCredits( fixtures );
 
