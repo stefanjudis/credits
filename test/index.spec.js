@@ -1,37 +1,24 @@
 import test from 'ava';
 import tmp from 'tmp';
 import fs from 'fs';
+import path from 'path';
 
 import credits from '../';
 
-test.cb( 'credits - folder exists', t => {
-  tmp.dir( { unsafeCleanup : true }, ( error, path, cleanUpCb ) => {
-    fs.mkdirSync( `${path}/node_modules` );
+const fixtures = path.resolve( './fixtures' );
 
-    fs.mkdirSync( `${path}/node_modules/foo` );
-    fs.writeFileSync(
-      `${path}/node_modules/foo/package.json`,
-      JSON.stringify( { author : 'Bob Calsow' } ),
-      'utf8'
-    );
-
-    credits( path )
+test( 'credits - folder exists', t => {
+    return credits( fixtures )
       .then( credits => {
-        t.deepEqual( credits.npm[ 0 ].name, 'Bob Calsow' );
-        t.deepEqual( credits.npm[ 0 ].packages, [ 'foo' ] );
-
-        cleanUpCb();
-
-        t.end();
+        t.deepEqual( credits.npm[ 0 ].name, 'Alice Bobson' );
+        t.deepEqual( credits.npm[ 0 ].packages, ['bar', 'boom', 'baz'] );
       } );
-
-  } );
 } );
 
-test.cb( 'credits - folder does not exist', t => {
-  credits( '/path/that/does/not/exist' )
+test( 'credits - folder does not exist', t => {
+  return credits( '/path/that/does/not/exist' )
     .catch( error => {
       t.deepEqual( error.message, '/path/that/does/not/exist does not exist' );
-      t.end();
+      t.pass();
     } );
 } );
