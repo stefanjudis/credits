@@ -46,21 +46,21 @@ credits( creditPath )
 
 /*
   Will print:
-  [
-    {
-      name     : 'Some person',
-      email    : 'some@email.io',
-      packages : [ 'package1', 'package2', 'package3', 'package4', 'package5']
-    },
-    {
-      name     : 'Some other great person',
-      email    : 'someOther@email.io',
-      packages : [ 'package6', 'package7', 'package8' ]
-    },
-    ...
-    ...
-    ...
-  ]
+  {
+    npm:
+      [ { name     : 'Some person',
+          email    : 'some@email.io',
+          packages : [ 'package1', 'package2', 'package3', 'package4', 'package5'] },
+        { name     : 'Some other great person',
+          email    : 'someOther@email.io',
+          packages : [ 'package6', 'package7', 'package8' ] },
+        ...
+        ...
+        ...
+      ],
+    jspm: [...],
+    bower: [...]
+  }
  */
 ```
 
