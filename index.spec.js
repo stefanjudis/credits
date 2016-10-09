@@ -16,8 +16,8 @@ test.cb( 'credits - folder exists', t => {
 
     credits( path )
       .then( credits => {
-        t.same( credits.npm[ 0 ].name, 'Bob Calsow' );
-        t.same( credits.npm[ 0 ].packages, [ 'foo' ] );
+        t.deepEqual( credits.npm[ 0 ].name, 'Bob Calsow' );
+        t.deepEqual( credits.npm[ 0 ].packages, [ 'foo' ] );
 
         cleanUpCb();
 
@@ -30,7 +30,7 @@ test.cb( 'credits - folder exists', t => {
 test.cb( 'credits - folder does not exist', t => {
   credits( '/path/that/does/not/exist' )
     .catch( error => {
-      t.same( error.message, '/path/that/does/not/exist does not exist' );
+      t.deepEqual( error.message, '/path/that/does/not/exist does not exist' );
       t.end();
     } );
 } );
