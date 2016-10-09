@@ -2,7 +2,7 @@ import test from 'ava';
 import { authors, index } from 'all-stars';
 import packageUtil from './package';
 
-test.cb( 'getAuthor - author is a string', t => {
+test( 'getAuthor - author is a string', t => {
   // only short hand name
   let packageJson1 = {
     author : 'Bob Calsow'
@@ -10,7 +10,7 @@ test.cb( 'getAuthor - author is a string', t => {
 
   let author1 = packageUtil.getAuthor( packageJson1 );
 
-  t.same(
+  t.deepEqual(
     author1,
     { name : 'Bob Calsow', email : undefined, url : undefined }
   );
@@ -22,7 +22,7 @@ test.cb( 'getAuthor - author is a string', t => {
 
   let author2 = packageUtil.getAuthor( packageJson2 );
 
-  t.same(
+  t.deepEqual(
     author2,
     { name : 'Bob Calsow', email : 'bob@calsow.io', url : undefined }
   );
@@ -34,7 +34,7 @@ test.cb( 'getAuthor - author is a string', t => {
 
   let author3 = packageUtil.getAuthor( packageJson3 );
 
-  t.same(
+  t.deepEqual(
     author3,
     { name : 'Bob Calsow', email : 'bob@calsow.io', url : 'http://4waisenkinder.de' }
   );
@@ -46,15 +46,13 @@ test.cb( 'getAuthor - author is a string', t => {
 
   let author4 = packageUtil.getAuthor( packageJson4 );
 
-  t.same(
+  t.deepEqual(
     author4,
     { name : 'Bob Calsow', email : undefined, url : 'http://4waisenkinder.de' }
   );
-
-  t.end();
 } );
 
-test.cb( 'getAuthor - author is an object', t => {
+test( 'getAuthor - author is an object', t => {
   let packageJson = {
     author : {
       name  : 'Bob Calsow',
@@ -65,20 +63,18 @@ test.cb( 'getAuthor - author is an object', t => {
 
   let author = packageUtil.getAuthor( packageJson );
 
-  t.same( author, packageJson.author );
-  t.end();
+  t.deepEqual( author, packageJson.author );
 } );
 
-test.cb( 'getAuthor - author is not defined', t => {
+test( 'getAuthor - author is not defined', t => {
   let packageJson = {};
 
   let author = packageUtil.getAuthor( packageJson );
 
-  t.same( author, false );
-  t.end();
+  t.deepEqual( author, false );
 } );
 
-test.cb( 'getAuthor - author in all-stars has additional properties', t => {
+test( 'getAuthor - author in all-stars has additional properties', t => {
   let packageJson = {
     author : {
       name  : 'Archimedes of Syracuse',
@@ -109,11 +105,10 @@ test.cb( 'getAuthor - author in all-stars has additional properties', t => {
   t.is( author.npm, fakeAuthorId );
   t.is( author.github, fakeAuthorId );
   t.is( author.twitter, fakeAuthorId );
-  t.end();
 } );
 
 
-test.cb( 'getMaintainers - maintainers is not defined', t => {
+test( 'getMaintainers - maintainers is not defined', t => {
   let packageJson = {
     maintainers : [
       'Bob Calsow <bob@calsow.io> (http://4waisenkinder.de)',
@@ -127,36 +122,33 @@ test.cb( 'getMaintainers - maintainers is not defined', t => {
 
   let maintainers = packageUtil.getMaintainers( packageJson );
 
-  t.same(
+  t.deepEqual(
     maintainers[ 0 ],
     { name : 'Bob Calsow', email : 'bob@calsow.io', url : 'http://4waisenkinder.de' }
   );
-  t.same(
+  t.deepEqual(
     maintainers[ 1 ],
     { name : 'Foo bar', email : 'foo@bar.io', url : 'http://foo.bar' }
   );
-  t.end();
 } );
 
-test.cb( 'getMaintainers - maintainers is an invalid string', t => {
+test( 'getMaintainers - maintainers is an invalid string', t => {
   let packageJson = {
     maintainers : 'Bob Calsow <bob@calsow.io> (http://4waisenkinder.de)'
   };
 
   let maintainers = packageUtil.getMaintainers( packageJson );
 
-  t.same(
+  t.deepEqual(
     maintainers[ 0 ],
     { name : 'Bob Calsow', email : 'bob@calsow.io', url : 'http://4waisenkinder.de' }
   );
-  t.end();
 } );
 
-test.cb( 'getMaintainers - maintainers is not defined', t => {
+test( 'getMaintainers - maintainers is not defined', t => {
   let packageJson = {};
 
   let maintainers = packageUtil.getMaintainers( packageJson );
 
-  t.same( maintainers, false );
-  t.end();
+  t.deepEqual( maintainers, false );
 } );
