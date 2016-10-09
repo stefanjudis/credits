@@ -14,7 +14,7 @@ $ npm i --save credits
 
 ## Basic usage
 
-`credits` will check all `node_modules` recursively and evaluate the **Author** and **Maintainers** of the **installed** dependencies included in the set path.
+`credits` will check `node_modules`, `bower_components`, and `jspm_packages` to evaluate the **Author** and **Maintainers** of the **installed** dependencies included in the set path.
 
 *In case you want to use it over the command line, there is also [credits-cli](https://github.com/stefanjudis/credits-cli).*
 
