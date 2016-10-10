@@ -7,7 +7,7 @@ import getCredits from '../lib/analyzers/bower';
 
 const fixtures = path.resolve( './fixtures' );
 
-test( 'getCredits - get availalbe bower credits', t => {
+test( 'getCredits - get available bower credits', t => {
   const credits = getCredits( fixtures );
 
   t.deepEqual( credits[ 0 ].name, 'Alice Bobson' );

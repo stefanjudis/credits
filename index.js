@@ -38,6 +38,7 @@ module.exports = function( projectPath ) {
         try {
           var credits = readDirectory( projectPath, analyzers );
         } catch( e ) {
+          /* istanbul ignore next */
           return reject( e );
         }
 

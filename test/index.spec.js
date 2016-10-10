@@ -11,7 +11,7 @@ test( 'credits - folder exists', t => {
     return credits( fixtures )
       .then( credits => {
         t.deepEqual( credits.npm[ 0 ].name, 'Alice Bobson' );
-        t.deepEqual( credits.npm[ 0 ].packages, ['bar', 'boom', 'baz'] );
+        t.deepEqual( credits.npm[ 0 ].packages.sort(), ['bar', 'baz', 'boom'] );
       } );
 } );
 
