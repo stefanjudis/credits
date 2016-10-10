@@ -9,6 +9,7 @@
     "lib"
   ],
   "scripts": {
+    "add": "all-contributors add",
     "lint": "eslint lib/*.js lib/**/*.js",
     "test": "npm run lint && nyc ava",
     "coverage": "nyc ava && nyc report --reporter=html",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/stefanjudis/credits#readme",
   "devDependencies": {
+    "all-contributors-cli": "^3.0.6",
     "ava": "^0.16.0",
     "coveralls": "^2.11.4",
     "eslint": "^3.7.1",
