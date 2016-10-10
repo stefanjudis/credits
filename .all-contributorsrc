@@ -1,0 +1,49 @@
+{
+  "projectName": "credits",
+  "projectOwner": "stefanjudis",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 75,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Hypercubed",
+      "name": "Jayson Harshbarger",
+      "avatar_url": "https://avatars.githubusercontent.com/u/509946?v=3",
+      "profile": "http://www.hypercubed.com",
+      "contributions": [
+        "doc",
+        "code"
+      ]
+    },
+    {
+      "login": "radibit",
+      "name": "Radimir Bitsov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1242621?v=3",
+      "profile": "http://radibit.com",
+      "contributions": [
+        "doc",
+        "code"
+      ]
+    },
+    {
+      "login": "allain",
+      "name": "Allain Lalonde",
+      "avatar_url": "https://avatars.githubusercontent.com/u/112751?v=3",
+      "profile": "http://stackoverflow.com/users/2443/allain-lalonde",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "nexdrew",
+      "name": "Andrew Goode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1929625?v=3",
+      "profile": "https://github.com/nexdrew",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}
