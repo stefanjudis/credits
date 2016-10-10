@@ -7,7 +7,7 @@ import getCredits from '../lib/analyzers/jspm';
 
 const fixtures = path.resolve( './fixtures' );
 
-test( 'getCredits - get availalbe jspm credits', t => {
+test( 'getCredits - get available jspm credits', t => {
   const credits = getCredits( fixtures );
 
   t.deepEqual( credits[ 0 ].name, 'Alice Bobson' );
