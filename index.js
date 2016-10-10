@@ -3,11 +3,10 @@
 var fs            = require( 'fs' );
 var path          = require( 'path' );
 var config        = require( './config' );
-var creditUtil    = require( './util/credit' );
-var packageUtil   = require( './util/package' );
-var analyzersUtil = require( './util/analyzers' );
+var creditUtil    = require( './lib/credit' );
+var packageUtil   = require( './lib/package' );
+var analyzersUtil = require( './lib/analyzers' );
 var Promise       = require( 'es6-promise' ).Promise;
-
 
 /**
  * Read project root and evaluate dependency credits
