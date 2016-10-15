@@ -1,1 +1,8 @@
-{"note":"no authors"}
+{
+  "name": "boom",
+  "note": "no authors",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true
+}
