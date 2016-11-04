@@ -41,7 +41,7 @@
   "dependencies": {
     "all-stars": "^1.1.0",
     "es6-promise": "^4.0.5",
-    "globby": "^6.0.0",
+    "globby": "^6.1.0",
     "object-assign": "^4.0.1"
   }
 }
