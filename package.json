@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/stefanjudis/credits#readme",
   "devDependencies": {
-    "all-contributors-cli": "^3.0.6",
+    "all-contributors-cli": "^3.1.0",
     "ava": "^0.16.0",
     "coveralls": "^2.11.4",
     "eslint": "^3.7.1",
