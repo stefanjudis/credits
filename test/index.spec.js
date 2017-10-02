@@ -8,10 +8,10 @@ import credits from '../';
 const fixtures = path.resolve( './fixtures' );
 
 test( 'credits - folder exists', t => {
-    return credits( fixtures )
+  return credits( fixtures )
       .then( credits => {
         t.deepEqual( credits.npm[ 0 ].name, 'Alice Bobson' );
-        t.deepEqual( credits.npm[ 0 ].packages.sort(), ['bar', 'baz', 'boom'] );
+        t.deepEqual( credits.npm[ 0 ].packages.sort(), [ 'bar', 'boom', 'boz' ] );
       } );
 } );
 
