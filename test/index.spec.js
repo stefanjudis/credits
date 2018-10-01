@@ -5,7 +5,7 @@ import path from 'path';
 
 import credits from '../';
 
-const fixtures = path.resolve( './fixtures' );
+const fixtures = path.resolve( __dirname, './fixtures' );
 
 test( 'credits - folder exists', t => {
     return credits( fixtures )
