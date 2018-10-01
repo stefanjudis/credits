@@ -4,7 +4,7 @@ import fs from 'fs';
 
 import analyzersUtil from '../lib/analyzers';
 
-test.cb( 'getAnalyzers - iterate over all availalbe analyzers', t => {
+test.cb( 'getAnalyzers - iterate over all available analyzers', t => {
   tmp.dir( { unsafeCleanup : true }, ( error, path, cleanUpCb ) => {
     fs.mkdirSync( `${path}/analyzers` );
 
