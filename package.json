@@ -30,17 +30,17 @@
   "homepage": "https://github.com/stefanjudis/credits#readme",
   "devDependencies": {
     "all-contributors-cli": "^3.0.6",
-    "ava": "^0.16.0",
+    "ava": "^0.25.0",
     "coveralls": "^2.11.4",
     "fs-extra": "^0.30.0",
     "nyc": "^8.3.1",
-    "tmp": "0.0.29",
-    "xo": "^0.18.2"
+    "tmp": "0.0.33",
+    "xo": "^0.23.0"
   },
   "dependencies": {
     "all-stars": "^1.1.0",
-    "es6-promise": "^4.0.5",
+    "es6-promise": "^4.2.5",
     "globby": "^6.0.0",
-    "object-assign": "^4.0.1"
+    "object-assign": "^4.1.1"
   }
 }
