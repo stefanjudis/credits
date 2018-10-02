@@ -5,7 +5,7 @@ import path from 'path';
 
 import getCredits from '../lib/analyzers/npm';
 
-const fixtures = path.resolve( './fixtures' );
+const fixtures = path.resolve( __dirname, './fixtures' );
 
 test( 'getCredits - get available npm credits', t => {
   fs.ensureSymlinkSync( `${fixtures}/linked`, `${fixtures}/node_modules/linked` );

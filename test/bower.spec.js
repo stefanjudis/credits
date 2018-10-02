@@ -5,7 +5,7 @@ import path from 'path';
 
 import getCredits from '../lib/analyzers/bower';
 
-const fixtures = path.resolve( './fixtures' );
+const fixtures = path.resolve( __dirname, './fixtures' );
 
 test( 'getCredits - get available bower credits', t => {
   const credits = getCredits( fixtures );
