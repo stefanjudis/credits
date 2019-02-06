@@ -14,16 +14,16 @@ test( 'getCredits - get available npm credits', t => {
   const credits = getCredits( fixtures );
 
   t.deepEqual( credits[ 0 ].name, 'Alice Bobson' );
-  t.deepEqual( credits[ 0 ].packages.sort(), [ 'bar', 'baz', 'boom' ] );
+  t.deepEqual( credits[ 0 ].packages.sort(), [ 'bar', 'boom', 'boz' ] );
 
   t.deepEqual( credits[ 1 ].name, 'Bob Calsow' );
   t.deepEqual( credits[ 1 ].packages.sort(), [ 'boing', 'foo' ] );
 
   t.deepEqual( credits[ 2 ].name, 'Randy Ran' );
-  t.deepEqual( credits[ 2 ].packages, [ 'baz' ] );
+  t.deepEqual( credits[ 2 ].packages, [ 'boz' ] );
 
   t.deepEqual( credits[ 3 ].name, 'Bobby Bob' );
-  t.deepEqual( credits[ 3 ].packages, [ 'baz' ] );
+  t.deepEqual( credits[ 3 ].packages, [ 'boz' ] );
 
   t.deepEqual( credits[ 4 ].name, 'Bob Loblaw' );
   t.deepEqual( credits[ 4 ].packages.sort(), [ 'cycle', 'linked' ] );
